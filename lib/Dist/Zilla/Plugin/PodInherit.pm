@@ -2,10 +2,15 @@ package Dist::Zilla::Plugin::PodInherit;
 # ABSTRACT: autogenerate inherited POD sections for Dist::Zilla distributions
 use strict;
 use warnings;
+
 use Moose;
 use Pod::Inherit;
+use Module::Load;
 
-our $VERSION = '0.007';
+use Dist::Zilla::File::InMemory;
+
+our $VERSION = '0.008';
+# AUTHORITY
 
 =head1 NAME
 
@@ -22,9 +27,6 @@ any modules in this distribution. See the documentation for L<Pod::Inherit> for 
 details.
 
 =cut
-
-use Dist::Zilla::File::InMemory;
-use Module::Load;
 
 with 'Dist::Zilla::Role::FileGatherer';
 with 'Dist::Zilla::Role::FileInjector';
