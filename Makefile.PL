@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.006;
+
 
 use ExtUtils::MakeMaker;
 
@@ -14,34 +14,23 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Dist-Zilla-Plugin-PodInherit",
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.006",
   "NAME" => "Dist::Zilla::Plugin::PodInherit",
   "PREREQ_PM" => {
     "Dist::Zilla" => "6.0",
-    "Dist::Zilla::File::InMemory" => 0,
-    "Dist::Zilla::Role::FileFinderUser" => 0,
-    "Dist::Zilla::Role::FileGatherer" => 0,
-    "Dist::Zilla::Role::FileInjector" => 0,
     "Module::Load" => 0,
-    "Moose" => 0,
     "Pod::Inherit" => "0.90",
     "Pod::POM" => "0.28",
-    "parent" => 0,
-    "strict" => 0,
-    "warnings" => 0
+    "parent" => 0
   },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
-    "Pod::POM" => "0.28",
     "Test::CheckDeps" => "0.010",
-    "Test::DZil" => 0,
-    "Test::More" => "0.98",
-    "parent" => 0
+    "Test::More" => "0.98"
   },
-  "VERSION" => "0.008",
+  "VERSION" => "0.009",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -50,24 +39,16 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Dist::Zilla" => "6.0",
-  "Dist::Zilla::File::InMemory" => 0,
-  "Dist::Zilla::Role::FileFinderUser" => 0,
-  "Dist::Zilla::Role::FileGatherer" => 0,
-  "Dist::Zilla::Role::FileInjector" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
   "IO::Handle" => 0,
   "IPC::Open3" => 0,
   "Module::Load" => 0,
-  "Moose" => 0,
   "Pod::Inherit" => "0.90",
   "Pod::POM" => "0.28",
   "Test::CheckDeps" => "0.010",
-  "Test::DZil" => 0,
   "Test::More" => "0.98",
-  "parent" => 0,
-  "strict" => 0,
-  "warnings" => 0
+  "parent" => 0
 );
 
 

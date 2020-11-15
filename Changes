@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.009     2020-11-16 05:19:03+08:00 Asia/Kuala_Lumpur
     New features:
 
     - hardcoded `=encoding utf8` in generated POD, because
