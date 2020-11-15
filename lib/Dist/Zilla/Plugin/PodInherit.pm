@@ -27,7 +27,7 @@ use Dist::Zilla::File::InMemory;
 with 'Dist::Zilla::Role::FileGatherer';
 with 'Dist::Zilla::Role::FileInjector';
 with 'Dist::Zilla::Role::FileFinderUser' => {
-	default_finders => [ qw( :InstallModules ) ],
+    default_finders => [ qw( :InstallModules ) ],
 };
 
 has generated => is => 'rw', default => 0;
@@ -45,11 +45,11 @@ the ones which end in .pm (case insensitive, will also match .PM).
 =cut
 
 sub gather_files {
-	my ($self) = @_;
-	foreach my $file (@{ $self->found_files }) {
-		$self->process_pod($file) if $file->name =~ /\.pm$/i;
-	}
-	$self->log("Generated " . $self->generated . " POD files");
+    my ($self) = @_;
+    foreach my $file (@{ $self->found_files }) {
+        $self->process_pod($file) if $file->name =~ /\.pm$/i;
+    }
+    $self->log("Generated " . $self->generated . " POD files");
 }
 
 =head2 process_pod
@@ -59,30 +59,30 @@ Calls L<Pod::Inherit> to generate the merged C<.pod> documentation files.
 =cut
 
 sub process_pod {
-	my ($self, $file) = @_;
-	unless(-r $file->name) {
-		$self->log_debug("Skipping " . $file->name . " because we can't read it, probably InMemory/FromCode");
-		return;
-	}
+    my ($self, $file) = @_;
+    unless(-r $file->name) {
+        $self->log_debug("Skipping " . $file->name . " because we can't read it, probably InMemory/FromCode");
+        return;
+    }
 
-	$self->log_debug("Processing " . $file->name . " for inherited methods");
-	local @INC = ('lib/', @INC);
-	my $cfg = Pod::Inherit->new({
-		input_files => [$file->name],
-		skip_underscored => 1,
-		method_format => 'L<%m|%c/%m>',
-		debug => 0,
-	});
-	my $content = $cfg->create_pod($file->name) or return;
-	(my $output = $file->name) =~ s{\.pm$}{.pod}i;
-	$self->add_file(
-		my $new = Dist::Zilla::File::InMemory->new({
-			name    => $output,
-			content => $content,
-		})
-	);
-	$self->log_debug("Generated POD for " . $file->name . " in " . $new->name);
-	$self->generated($self->generated + 1);
+    $self->log_debug("Processing " . $file->name . " for inherited methods");
+    local @INC = ('lib/', @INC);
+    my $cfg = Pod::Inherit->new({
+        input_files => [$file->name],
+        skip_underscored => 1,
+        method_format => 'L<%m|%c/%m>',
+        debug => 0,
+    });
+    my $content = $cfg->create_pod($file->name) or return;
+    (my $output = $file->name) =~ s{\.pm$}{.pod}i;
+    $self->add_file(
+        my $new = Dist::Zilla::File::InMemory->new({
+            name    => $output,
+            content => $content,
+        })
+    );
+    $self->log_debug("Generated POD for " . $file->name . " in " . $new->name);
+    $self->generated($self->generated + 1);
 }
 
 __PACKAGE__->meta->make_immutable;
