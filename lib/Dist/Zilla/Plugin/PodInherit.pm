@@ -24,6 +24,8 @@ details.
 =cut
 
 use Dist::Zilla::File::InMemory;
+use Module::Load;
+
 with 'Dist::Zilla::Role::FileGatherer';
 with 'Dist::Zilla::Role::FileInjector';
 with 'Dist::Zilla::Role::FileFinderUser' => {
@@ -67,13 +69,15 @@ sub process_pod {
 
     $self->log_debug("Processing " . $file->name . " for inherited methods");
     local @INC = ('lib/', @INC);
+    my $name = $file->name;
     my $cfg = Pod::Inherit->new({
-        input_files => [$file->name],
+        input_files => [$name],
         skip_underscored => 1,
         method_format => 'L<%m|%c/%m>',
         debug => 0,
     });
-    my $content = $cfg->create_pod($file->name) or return;
+    Module::Load::load($cfg->_file_to_package($name));
+    my $content = $cfg->create_pod($name) or return;
     (my $output = $file->name) =~ s{\.pm$}{.pod}i;
     $self->add_file(
         my $new = Dist::Zilla::File::InMemory->new({
