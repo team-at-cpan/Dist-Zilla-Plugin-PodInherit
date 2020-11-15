@@ -126,9 +126,9 @@ directly so perhaps that would be a better approach.
 
 =head1 AUTHOR
 
-Tom Molesworth <cpan@entitymodel.com>
+Tom Molesworth <TEAM@cpan.org>
 
 =head1 LICENSE
 
-Copyright Tom Molesworth 2012-2013. Licensed under the same terms as Perl itself.
+Copyright Tom Molesworth 2012-2020. Licensed under the same terms as Perl itself.
 
