@@ -80,6 +80,12 @@ sub process_pod {
     });
     Module::Load::load($cfg->_file_to_package($name));
     my $content = $cfg->create_pod($name) or return;
+
+    # The encoding line does not make it through to the target file, so we
+    # hardcode a value here. Ideally it'd match the original source... but
+    # even more ideally, everything uses UTF-8 everywhere.
+    $content = "=encoding utf8\n\n$content" unless $content =~ /^=encoding/;
+
     (my $output = $file->name) =~ s{\.pm$}{.pod}i;
     $self->add_file(
         my $new = Dist::Zilla::File::InMemory->new({
