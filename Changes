@@ -1,6 +1,13 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    No new features.
+
+    Bugs fixed:
+
+    - work around relative-`do` in Pod::Inherit by making sure
+    that we load each file ourselves, this prepopulates in %INC
+    and means that we should skip the file-loading step
 
 0.007     2013-08-04 03:20:10 Europe/London
 	No functional changes
