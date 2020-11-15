@@ -7,12 +7,8 @@ build_requires:
   File::Spec: '0'
   IO::Handle: '0'
   IPC::Open3: '0'
-  Pod::POM: '0.28'
   Test::CheckDeps: '0.010'
-  Test::DZil: '0'
   Test::More: '0.98'
-  parent: '0'
-  perl: '5.006'
 configure_requires:
   ExtUtils::MakeMaker: '0'
 dynamic_config: 0
@@ -32,25 +28,18 @@ no_index:
 provides:
   Dist::Zilla::Plugin::PodInherit:
     file: lib/Dist/Zilla/Plugin/PodInherit.pm
-    version: '0.008'
+    version: '0.009'
 requires:
   Dist::Zilla: '6.0'
-  Dist::Zilla::File::InMemory: '0'
-  Dist::Zilla::Role::FileFinderUser: '0'
-  Dist::Zilla::Role::FileGatherer: '0'
-  Dist::Zilla::Role::FileInjector: '0'
   Module::Load: '0'
-  Moose: '0'
   Pod::Inherit: '0.90'
   Pod::POM: '0.28'
   parent: '0'
-  strict: '0'
-  warnings: '0'
 resources:
   bugtracker: https://github.com/team-at-cpan/Dist-Zilla-Plugin-PodInherit/issues
   homepage: https://github.com/team-at-cpan/Dist-Zilla-Plugin-PodInherit
   repository: https://github.com/team-at-cpan/Dist-Zilla-Plugin-PodInherit.git
-version: '0.008'
+version: '0.009'
 x_authority: cpan:TEAM
 x_generated_by_perl: v5.32.0
 x_serialization_backend: 'YAML::Tiny version 1.73'
