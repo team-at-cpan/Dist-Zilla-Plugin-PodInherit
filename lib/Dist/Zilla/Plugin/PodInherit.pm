@@ -9,7 +9,7 @@ use Module::Load;
 
 use Dist::Zilla::File::InMemory;
 
-our $VERSION = '0.008';
+our $VERSION = '0.009';
 # AUTHORITY
 
 =head1 NAME
